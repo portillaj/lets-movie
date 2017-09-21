@@ -4,8 +4,9 @@ class Poster extends Component {
     render() {
         return(
                 <div>
-                    <h1 className="testing">testing sass</h1>
+                    <div className="container">
                     <img className="poster-img" src={this.props.poster} />
+                    </div>
                 </div>
         );
     }
