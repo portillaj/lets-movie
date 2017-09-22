@@ -11,7 +11,8 @@ body {
 
 .poster-img {
     height: 500px;
-    margin-left: -15px;
+    margin-left: -45px;
+    width: 400px;
 }
 
 .search-bar-section {
@@ -31,4 +32,20 @@ body {
 .logo-sub {
     color: $main;
 }
+}
+
+.movie-info {
+    margin-top: 75px;
+}
+
+.details {
+    background-color: black;
+    .details-section {
+        .movie-title {
+            color: $white;
+        }
+        .summary {
+            color: $main;
+        }
+    }
 }
