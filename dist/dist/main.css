@@ -1,8 +1,7 @@
 body {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
-  background-color: #8A8A8A; }
+  box-sizing: border-box; }
 
 .poster-img {
   height: 500px;
@@ -10,7 +9,10 @@ body {
 
 .search-bar-section {
   background-color: #434343;
-  height: 120px; }
+  height: 120px;
+  margin-top: 5%; }
+  .search-bar-section .search-movie {
+    margin-top: 40px; }
 
 .logo-section .logo {
   display: inline-block;
@@ -22,12 +24,18 @@ body {
 .logo-section .logo-sub {
   color: #CB5D6F; }
 
-.movie-info {
-  margin-top: 75px; }
-
-.details {
-  background-color: black; }
-  .details .details-section .movie-title {
-    color: #fff; }
-  .details .details-section .summary {
-    color: #CB5D6F; }
+.middle-section {
+  color: #fff; }
+  .middle-section .poster-section {
+    margin-left: -15px; }
+  .middle-section .movie-info {
+    margin-top: 75px; }
+  .middle-section .details {
+    margin-top: 15px; }
+    .middle-section .details .details-section {
+      margin-top: 10px; }
+      .middle-section .details .details-section .movie-title {
+        color: #fff; }
+      .middle-section .details .details-section .summary {
+        color: #CB5D6F;
+        width: 75%; }

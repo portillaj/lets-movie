@@ -5,13 +5,12 @@ import Poster from './poster-section';
 class MovieDetails extends Component {
     render() {
         return(
-                <div>
-                    <div className="container">
-                        <div className="row">
-                                <div className="col-lg-6">
+                <div className="container middle-section bg-dark">
+                        <div className="row poster-section">
+                                <div className="col-lg-5">
                                     <Poster poster= {this.props.poster}/>
                                 </div>
-                                <div className="col-lg-6">
+                                <div className="col-lg-7 details">
                                             <div className="details-section">
                                                 <h1 className="movie-title">{this.props.title}</h1>
                                                 <h3>{this.props.tagline}</h3>
@@ -19,24 +18,23 @@ class MovieDetails extends Component {
                                             </div>
 
                                             <div className="row movie-info">
-                                                <div className="col-md-6">
+                                                <div className="col-sm-12 col-md-6">
                                                     <h3>Movie Run Time</h3>
-                                                    <h2>{this.props.runtime} Minutes</h2>
+                                                    <p className="text-info">{this.props.runtime} Minutes</p>
                                                     <h3>Average Vote</h3>
-                                                    <h2>{this.props.vote}/10</h2>
+                                                    <p className="text-info">{this.props.vote}/10</p>
                                                 </div>
 
-                                                <div className="col-md-6">
+                                                <div className="col-sm-12 col-md-6">
                                                     <h3>Release Date</h3>
-                                                    <h2>{this.props.release}</h2>
+                                                    <p className="text-info">{this.props.release}</p>
                                                     <h3>Box Office</h3>
-                                                    <h2>{this.props.box}</h2>
+                                                    <p className="text-info">{this.props.box}</p>
                                                 </div>
                                             </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
         );
     }
 }

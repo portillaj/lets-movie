@@ -6,6 +6,7 @@ import style from '../scss/main.scss';
 import Poster from './components/poster-section';
 import Searchbar from './components/search-bar-header';
 import MovieDetails  from './components/movie-details';
+import VideoSection from './components/video-section';
 
 const MOVIE_API_KEY = '2d733da824cd8c252eab2c2990379324';
 const YOUTUBE_API_KEY =  'AIzaSyAX-BBg9D4Zz5iDgjGuviEIMcsShqVgFmQ';
@@ -63,6 +64,7 @@ render() {
                     runtime={this.state.runtime}
                     tagline={this.state.tagline}
                   />
+          <VideoSection />
       </div>
     );
   }
