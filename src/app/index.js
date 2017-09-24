@@ -5,7 +5,7 @@ import style from '../scss/main.scss';
 //components
 import Poster from './components/poster-section';
 import Searchbar from './components/search-bar-header';
-import MovieDetails from './components/movie-details';
+import MovieDetails  from './components/movie-details';
 
 const MOVIE_API_KEY = '2d733da824cd8c252eab2c2990379324';
 const YOUTUBE_API_KEY =  'AIzaSyAX-BBg9D4Zz5iDgjGuviEIMcsShqVgFmQ';
@@ -53,13 +53,8 @@ render() {
     return (
       <div>
         <Searchbar />
-        <div className="row">
-          <div className="container">
-            <div className="col-md-5">
-                <Poster poster={this.state.image}/>
-            </div>
-            <div className="col-md-7">
                   <MovieDetails
+                    poster={this.state.image}
                     vote={this.state.vote}
                     title={this.state.title}
                     summary={this.state.summary}
@@ -68,11 +63,6 @@ render() {
                     runtime={this.state.runtime}
                     tagline={this.state.tagline}
                   />
-            </div>
-        </div>
-      </div>
-
-
       </div>
     );
   }

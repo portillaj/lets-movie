@@ -6,7 +6,6 @@ body {
 
 .poster-img {
   height: 500px;
-  margin-left: -45px;
   width: 400px; }
 
 .search-bar-section {
@@ -23,8 +22,12 @@ body {
 .logo-section .logo-sub {
   color: #CB5D6F; }
 
-.details-section .movie-title {
-  color: #fff; }
+.movie-info {
+  margin-top: 75px; }
 
-.details-section .summary {
-  color: #CB5D6F; }
+.details {
+  background-color: black; }
+  .details .details-section .movie-title {
+    color: #fff; }
+  .details .details-section .summary {
+    color: #CB5D6F; }
