@@ -3,14 +3,20 @@ body {
   padding: 0;
   box-sizing: border-box; }
 
+.top-app {
+  padding-top: 7%; }
+
+.background {
+  background: #434343;
+  height: 100vh; }
+
 .poster-img {
   height: 500px;
   width: 400px; }
 
 .search-bar-section {
   background-color: #434343;
-  height: 120px;
-  margin-top: 5%; }
+  height: 120px; }
   .search-bar-section .search-movie {
     margin-top: 40px; }
 

@@ -8,19 +8,23 @@ class Searchbar extends Component {
             searchTerm: ""
         };
 
-        this.handleInput = this.handleInput.bind(this)
     }
-        handleInput(e) {
+        handleChange(e) {
+            console.log(this.state.searchTerm);
             this.setState({searchTerm: e.target.value})
         }
-        movieSearchBtn() {
-            console.log("button clicked");
+
+        handleSubmit(event) {
+            event.preventDefautl();
+            var text = this.state.searchTerm;
+            console.log("form submitted", text);
+                this.setState({searchTerm: " "});
         //   this.setState({term});
         //   this.props.onSearchTermChange(term);
         }
     render() {
         return(
-                <div>
+                <div className="top-app">
                     <div className="container search-bar-section bg-info">
                         <div className="row">
                             <div className="col-md-7">
@@ -30,14 +34,15 @@ class Searchbar extends Component {
                             </div>
                             </div>
                             <div className="col-md-5">
+                                <form onSubmit={this.handleSubmit.bind(this)}>
                                 <div className="input-group search-movie">
                                         <input className="form-control bg-light" type="text" placeholder="Search Movie"
-                                        value={this.state.searchTerm}
-                                        onChange={this.handleInput}/>
+                                        onChange={this.handleChange.bind(this)}
+                                        value={this.state.searchTerm}/>
                                         <span className="input-group-btn">
-                                            <button className="btn btn-dark" type="button"
-                                                onClick={this.movieSearchBtn}>Go!</button></span>
+                                            <button className="btn btn-dark" type="button">Go!</button></span>
                                 </div>
+                            </form>
                             </div>
                         </div>
                     </div>

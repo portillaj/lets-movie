@@ -3,8 +3,6 @@ import ReactDOM from 'react-dom';
 import style from '../scss/main.scss';
 
 //components
-import Poster from './components/poster-section';
-import Searchbar from './components/search-bar-header';
 import MovieDetails  from './components/movie-details';
 import VideoSection from './components/video-section';
 
@@ -52,19 +50,20 @@ render() {
     console.log(err)
   });
     return (
-      <div>
-        <Searchbar />
-                  <MovieDetails
-                    poster={this.state.image}
-                    vote={this.state.vote}
-                    title={this.state.title}
-                    summary={this.state.summary}
-                    release={this.state.release}
-                    box={this.state.box}
-                    runtime={this.state.runtime}
-                    tagline={this.state.tagline}
-                  />
-          <VideoSection />
+      <div className="background">
+
+            <MovieDetails
+                poster={this.state.image}
+                vote={this.state.vote}
+                title={this.state.title}
+                summary={this.state.summary}
+                release={this.state.release}
+                box={this.state.box}
+                runtime={this.state.runtime}
+                tagline={this.state.tagline}
+              />
+
+            <VideoSection />
       </div>
     );
   }
