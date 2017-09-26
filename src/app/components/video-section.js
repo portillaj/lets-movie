@@ -1,13 +1,24 @@
-import React, {Component} from 'react';
+import React from 'react';
 
-class VideoSection extends Component {
-    render() {
+const VideoSection = (props) => {
+
+  if(!props){
+    return <div>Loading...</div>;
+  }
+  const url = `https://www.youtube.com/embed/${props.trailer}`;
         return(
-                <div className="container">
-                    <h1>Video Section</h1>
+          <div className="video-detail">
+            <div className="row">
+              <div className="col-md-12 video-half">
+                <div className="embed-responsive embed-responsive-16by9">
+                  <iframe className="embed-responsive-item playing-video" src={url}></iframe>
                 </div>
+              </div>
+
+            </div>
+
+          </div>
         );
     }
-}
 
 export default VideoSection;

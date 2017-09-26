@@ -1,6 +1,7 @@
 $searchBack:  #434343;
 $white: #fff;
 $main: #CB5D6F;
+$lightblue: #17a2b8;
 
 body {
     margin: 0;
@@ -13,12 +14,13 @@ body {
 }
 
 .background {
-    background: $searchBack;
-    height: 100vh;
+    min-height: 1400px;
+    background-position: center;
+    background-size: cover;
 }
 
 .poster-img {
-    height: 500px;
+    min-height:100%;
     width: 400px;
 }
 
@@ -47,17 +49,24 @@ body {
 .middle-section {
     color: $white;
     .poster-section {
-        margin-left: -15px;
+        margin-left: -25px;
     }
     .movie-info {
-        margin-top: 75px;
+        margin-top: 70px;
     }
     .details {
-        margin-top: 15px;
+      border: 2px solid $white;
+        margin-top: 5px;
+        border-radius: 5px;
+        margin-bottom: 8px;
         .details-section {
             margin-top: 10px;
             .movie-title {
-                color: $white;
+                color: $lightblue;
+                font-size: 30px;
+            }
+            h3 {
+              font-size: 25px;
             }
             .summary {
                 color: $main;
@@ -65,4 +74,12 @@ body {
             }
         }
     }
+}
+
+.hr-bar {
+  border: 2px solid $white;
+}
+
+.video-detail {
+  padding-bottom: 50px;
 }

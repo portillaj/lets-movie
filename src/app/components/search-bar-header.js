@@ -27,16 +27,16 @@ class Searchbar extends Component {
                 <div className="top-app">
                     <div className="container search-bar-section bg-info">
                         <div className="row">
-                            <div className="col-md-7">
+                            <div className="col-sm-5 col-md-7">
                                 <div className="logo-section">
                                 <h1 className="logo">Let's Movie</h1>
                                 <p className="logo-sub">Search for your favorite movie</p>
                             </div>
                             </div>
-                            <div className="col-md-5">
+                            <div className="col-sm-7 col-md-5">
                                 <form onSubmit={this.handleSubmit.bind(this)}>
                                 <div className="input-group search-movie">
-                                        <input className="form-control bg-light" type="text" placeholder="Search Movie"
+                                        <input className="form-control bg-light my-search" type="text" placeholder="Search Movie"
                                         onChange={this.handleChange.bind(this)}
                                         value={this.state.searchTerm}/>
                                         <span className="input-group-btn">
