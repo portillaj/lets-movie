@@ -15,6 +15,7 @@ class App extends Component {
   constructor(props) {
     super(props);
 
+    //set the initial state for the application
     this.state = {
       trailer: [],
       title: " ",
@@ -27,16 +28,17 @@ class App extends Component {
       tagline: " ",
       backdrop: ""
     };
-
-
-
+    
+    //binding function moneyFormat
     this.moneyFormat = this.moneyFormat.bind(this);
   }
 
+  //FUNCTIONS
   moneyFormat(n, currency) {
       return currency + " " + parseInt(n).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, "$1,");
   }
 
+//call the movie api once when the page is rendered
   componentDidMount() {
 
   fetch(url).then(response => {
@@ -44,6 +46,7 @@ class App extends Component {
 
   }).then(json => {
 
+    //setting the state after the api is hit
     this.setState({
       title: json.original_title,
       image: `https://image.tmdb.org/t/p/w500/${json.poster_path}`,
@@ -58,14 +61,19 @@ class App extends Component {
   }).catch(err => {
     console.log(err);
   });
+  
 } //end componentDidMount
 
+//when the component updated, add the background image from the movie that is being fetched from the api
   componentDidUpdate() {
 
     document.querySelector(".background").style.backgroundImage = `url(https://image.tmdb.org/t/p/original${this.state.backdrop})`;
   }
+  
 render() {
+    //use the youtube api to get the video trailer after the movie api is complete
     var youtubeUrl = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=3&q=${this.state.title}&key=${YOUTUBE_API_KEY}`;
+    
     fetch(youtubeUrl).then(response => {
       return response.json();
     }).then(json => {
@@ -76,6 +84,7 @@ render() {
     }).catch(err => {
       console.log(err);
     });
+    
     return (
       <div>
           <div className="container">
@@ -92,10 +101,10 @@ render() {
                 moneyFormat={this.moneyFormat(this.state.box, "$")}
                 trailer={this.state.trailer}
               />
-            </div>
+          </div>
       </div>
-    );
-  }
-}
+    ); //end return 
+  } //end render
+} //end Class
 
 ReactDOM.render(<App />, document.getElementById('app'));

@@ -5,6 +5,7 @@ const VideoSection = (props) => {
   if(!props){
     return <div>Loading...</div>;
   }
+  
   const url = `https://www.youtube.com/embed/${props.trailer}`;
         return(
           <div className="video-detail">
@@ -14,9 +15,7 @@ const VideoSection = (props) => {
                   <iframe className="embed-responsive-item playing-video" src={url}></iframe>
                 </div>
               </div>
-
             </div>
-
           </div>
         );
     }
