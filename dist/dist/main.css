@@ -7,11 +7,12 @@ body {
   padding-top: 7%; }
 
 .background {
-  background: #434343;
-  height: 100vh; }
+  min-height: 1400px;
+  background-position: center;
+  background-size: cover; }
 
 .poster-img {
-  height: 500px;
+  min-height: 100%;
   width: 400px; }
 
 .search-bar-section {
@@ -33,15 +34,27 @@ body {
 .middle-section {
   color: #fff; }
   .middle-section .poster-section {
-    margin-left: -15px; }
+    margin-left: -25px; }
   .middle-section .movie-info {
-    margin-top: 75px; }
+    margin-top: 70px; }
   .middle-section .details {
-    margin-top: 15px; }
+    border: 2px solid #fff;
+    margin-top: 5px;
+    border-radius: 5px;
+    margin-bottom: 8px; }
     .middle-section .details .details-section {
       margin-top: 10px; }
       .middle-section .details .details-section .movie-title {
-        color: #fff; }
+        color: #17a2b8;
+        font-size: 30px; }
+      .middle-section .details .details-section h3 {
+        font-size: 25px; }
       .middle-section .details .details-section .summary {
         color: #CB5D6F;
         width: 75%; }
+
+.hr-bar {
+  border: 2px solid #fff; }
+
+.video-detail {
+  padding-bottom: 50px; }

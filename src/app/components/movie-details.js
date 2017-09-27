@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 
 import Poster from './poster-section';
-import Searchbar from './search-bar-header';
 import VideoSection from './video-section';
 
 class MovieDetails extends Component {
@@ -12,7 +11,7 @@ class MovieDetails extends Component {
 render() {
 return(
 <div>
-    <Searchbar />
+    
     <div className="container middle-section bg-dark">
         <div className="row poster-section">
             <div className="col-lg-5 mx-auto">

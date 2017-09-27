@@ -5,7 +5,9 @@ class Searchbar extends Component {
     //FUNCTIONS
         //function that handles the input search field when the user is entering a movie and getting value
         handleChange(e) {
-          
+          e.preventDefault();
+          const movie = e.target.value;
+          this.props.inputChange(movie);
         }
         
         //function that handles the submit button when the user enters a movie and clicks the search button
@@ -34,6 +36,7 @@ render() {
                             </span>
                         </div>
                     </form>
+                    <h1>{this.props.movieTitle}</h1>
                 </div>
             </div>
             </div>

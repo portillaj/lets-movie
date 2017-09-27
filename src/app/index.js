@@ -1,8 +1,10 @@
+/* global fetch */
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import style from '../scss/main.scss';
 import YTSearch from 'youtube-api-search';
 //components
+import Searchbar from './components/search-bar-header';
 import MovieDetails  from './components/movie-details';
 
 const MOVIE_API_KEY = '2d733da824cd8c252eab2c2990379324';
@@ -26,17 +28,24 @@ class App extends Component {
       release: " ",
       runtime: " ",
       tagline: " ",
-      backdrop: ""
+      backdrop: "",
+      movie: "star wars rogue one"
     };
     
     //binding function moneyFormat
     this.moneyFormat = this.moneyFormat.bind(this);
+    
   }
 
   //FUNCTIONS
   moneyFormat(n, currency) {
       return currency + " " + parseInt(n).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, "$1,");
   }
+  
+  //function that updates the state when it is changed in the searchbar component
+    inputChange(movie) {
+      this.setState({movie})
+    }
 
 //call the movie api once when the page is rendered
   componentDidMount() {
@@ -88,6 +97,7 @@ render() {
     return (
       <div>
           <div className="container">
+          <Searchbar inputChange={this.inputChange.bind(this)} movieTitle={this.state.movie}/>
             <MovieDetails
                searchTerm= ""
                 poster={this.state.image}
