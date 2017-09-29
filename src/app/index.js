@@ -7,10 +7,8 @@ import YTSearch from 'youtube-api-search';
 import Searchbar from './components/search-bar-header';
 import MovieDetails  from './components/movie-details';
 
-const MOVIE_API_KEY = '2d733da824cd8c252eab2c2990379324';
 
-const YOUTUBE_API_KEY =  'AIzaSyAX-BBg9D4Zz5iDgjGuviEIMcsShqVgFmQ';
-const url = `https://api.themoviedb.org/3/movie/284053?api_key=${MOVIE_API_KEY}`;
+
 
 
 class App extends Component {
@@ -29,77 +27,86 @@ class App extends Component {
       runtime: " ",
       tagline: " ",
       backdrop: "",
-      movie: "star wars rogue one"
+      movieTitle: "star%20wars%20rogue%20one"
     };
-    
+
     //binding function moneyFormat
     this.moneyFormat = this.moneyFormat.bind(this);
-    
-  }
+
+  } //end constructor
 
   //FUNCTIONS
   moneyFormat(n, currency) {
       return currency + " " + parseInt(n).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, "$1,");
   }
-  
+
+
   //function that updates the state when it is changed in the searchbar component
-    inputChange(movie) {
-      this.setState({movie})
+    inputChange(movieTitle) {
+      this.setState({movieTitle})
+
     }
 
-//call the movie api once when the page is rendered
-  componentDidMount() {
+    // let title = this.state.movieTitle;
+    // console.log(`component did mount: ${title}`);
+    // //let url = `https://api.themoviedb.org/3/movie/${this.state.movieId}?&api_key=${MOVIE_API_KEY}`;
+    // this.fetchMovieApi(title);
 
-  fetch(url).then(response => {
-    return  response.json();
+// call the movie api once when the page is rendered
+//     let url = `https://api.themoviedb.org/3/movie/${this.state.movieId}?&api_key=${MOVIE_API_KEY}`;
+//       let movieTitle = title.replace(/ /g,"%20");
+fetchMovieApi(url) {
 
-  }).then(json => {
+      fetch(url).then(response => {
+        return  response.json();
+      }).then(json => {
+        console.log(json);
+        //setting the state after the api is hit
+        const newMovie = this.setState({
+          title: json.results[0].original_title,
+          image: `https://image.tmdb.org/t/p/w500${json.results[0].poster_path}`,
+          summary: json.results[0].overview,
+          vote: json.results[0].vote_average,
+          box: json.results[0].revenue,
+          release: json.results[0].release_date,
+          runtime: json.results[0].runtime,
+          tagline: json.results[0].tagline,
+          backdrop: json.results[0].backdrop_path,
+          movieId: json.results[0].id,
+        });
+      }).catch(err => {
+        console.log(err);
+      });
+    }
 
-    //setting the state after the api is hit
-    this.setState({
-      title: json.original_title,
-      image: `https://image.tmdb.org/t/p/w500/${json.poster_path}`,
-      summary: json.overview,
-      vote: json.vote_average,
-      box: json.revenue,
-      release: json.release_date,
-      runtime: json.runtime,
-      tagline: json.tagline,
-      backdrop: json.backdrop_path
-    });
-  }).catch(err => {
-    console.log(err);
-  });
-  
-} //end componentDidMount
+fetchTrailer(youtubeUrl) {
+      //use the youtube api to get the video trailer after the movie api is complete
+
+
+      fetch(youtubeUrl).then(response => {
+        return response.json();
+      }).then(json => {
+        this.setState({
+          trailer: json.items[0].id.videoId
+      });
+
+      }).catch(err => {
+        console.log(err);
+      });
+  }
 
 //when the component updated, add the background image from the movie that is being fetched from the api
   componentDidUpdate() {
-
     document.querySelector(".background").style.backgroundImage = `url(https://image.tmdb.org/t/p/original${this.state.backdrop})`;
   }
-  
-render() {
-    //use the youtube api to get the video trailer after the movie api is complete
-    var youtubeUrl = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=3&q=${this.state.title}&key=${YOUTUBE_API_KEY}`;
-    
-    fetch(youtubeUrl).then(response => {
-      return response.json();
-    }).then(json => {
-      this.setState({
-        trailer: json.items[0].id.videoId
-    });
 
-    }).catch(err => {
-      console.log(err);
-    });
-    
+render() {
+
     return (
       <div>
           <div className="container">
-          <Searchbar inputChange={this.inputChange.bind(this)} movieTitle={this.state.movie}/>
+          <Searchbar inputChange={this.inputChange.bind(this)} fetchTrailer={this.fetchTrailer.bind(this)} fetchMovie={this.fetchMovieApi.bind(this)}  />
             <MovieDetails
-               searchTerm= ""
                 poster={this.state.image}
                 vote={this.state.vote}
                 title={this.state.title}
@@ -113,7 +120,7 @@ render() {
               />
           </div>
       </div>
-    ); //end return 
+    ); //end return
   } //end render
 } //end Class
 

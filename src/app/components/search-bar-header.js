@@ -1,20 +1,22 @@
 import React, {Component} from 'react';
 
+const MOVIE_API_KEY = '2d733da824cd8c252eab2c2990379324';
+const YOUTUBE_API_KEY =  'AIzaSyAX-BBg9D4Zz5iDgjGuviEIMcsShqVgFmQ';
+
 class Searchbar extends Component {
-    
     //FUNCTIONS
-        //function that handles the input search field when the user is entering a movie and getting value
-        handleChange(e) {
-          e.preventDefault();
-          const movie = e.target.value;
-          this.props.inputChange(movie);
-        }
-        
         //function that handles the submit button when the user enters a movie and clicks the search button
-        handleSubmit(event) {
-            
+        handleSubmit(e) {
+          e.preventDefault();
+          let movie = this.refs.movieSearch.value;
+          let movieTitle = movie.replace(/ /g,"%20");
+          let url = `https://api.themoviedb.org/3/search/movie?api_key=${MOVIE_API_KEY}&language=en-US&query=${movieTitle}&page=1&include_adult=false`;
+          var youtubeUrl = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=3&q=${movieTitle} trailer&key=${YOUTUBE_API_KEY}`;
+          this.props.inputChange(movieTitle);
+          this.props.fetchMovie(url);
+          this.props.fetchTrailer(youtubeUrl);
         }
-        
+
 render() {
     return(
         <div className="top-app">
@@ -29,14 +31,12 @@ render() {
                 <div className="col-sm-7 col-md-5">
                     <form onSubmit={this.handleSubmit.bind(this)}>
                         <div className="input-group search-movie">
-                            <input className="form-control bg-light my-search" type="text" placeholder="Search Movie"
-                            onChange={this.handleChange.bind(this)} />
+                            <input className="form-control bg-light my-search" required ref="movieSearch" type="text" placeholder="Search Movie" />
                             <span className="input-group-btn">
-                                <button className="btn btn-dark" type="button">Go!</button>
+                                <button className="btn btn-dark" onClick={this.handleSubmit.bind(this)} type="button">Go!</button>
                             </span>
                         </div>
                     </form>
-                    <h1>{this.props.movieTitle}</h1>
                 </div>
             </div>
             </div>
