@@ -8,12 +8,11 @@ body {
 
 .background {
   min-height: 1400px;
-  background-position: center;
   background-size: cover; }
 
 .poster-img {
-  min-height: 100%;
-  width: 400px; }
+  min-height: 100vh;
+  width: 450px; }
 
 .search-bar-section {
   background-color: #434343;
@@ -34,13 +33,12 @@ body {
 .middle-section {
   color: #fff; }
   .middle-section .poster-section {
-    margin-left: -25px; }
+    margin-left: -27px; }
   .middle-section .movie-info {
     margin-top: 70px; }
   .middle-section .details {
-    border: 2px solid #fff;
     margin-top: 5px;
-    border-radius: 5px;
+    border-radius: 3px;
     margin-bottom: 8px; }
     .middle-section .details .details-section {
       margin-top: 10px; }

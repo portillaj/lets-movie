@@ -15,13 +15,13 @@ body {
 
 .background {
     min-height: 1400px;
-    background-position: center;
+
     background-size: cover;
 }
 
 .poster-img {
-    min-height:100%;
-    width: 400px;
+    min-height:100vh;
+    width: 450px;
 }
 
 .search-bar-section {
@@ -49,15 +49,14 @@ body {
 .middle-section {
     color: $white;
     .poster-section {
-        margin-left: -25px;
+        margin-left: -27px;
     }
     .movie-info {
         margin-top: 70px;
     }
     .details {
-      border: 2px solid $white;
         margin-top: 5px;
-        border-radius: 5px;
+        border-radius: 3px;
         margin-bottom: 8px;
         .details-section {
             margin-top: 10px;

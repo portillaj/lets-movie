@@ -16,16 +16,6 @@ class App extends Component {
 
     //set the initial state for the application
     this.state = {
-      trailer: [],
-      title: " ",
-      image: " ",
-      summary: " ",
-      vote: " ",
-      box: " ",
-      release: " ",
-      runtime: " ",
-      tagline: " ",
-      backdrop: "",
       movieTitle: "star wars rogue one",
       movieId: 330459
     };
@@ -40,12 +30,13 @@ class App extends Component {
       return currency + " " + parseInt(n).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, "$1,");
   }
 
-
   //function that updates the state when it is changed in the searchbar component
     inputChange(movieTitle) {
       this.setState({movieTitle})
     }
 
+//function that gets the movieID for the movie the user searched for
+//then the getMovieId function will run to get the details
 fetchMovieApi(url) {
       fetch(url).then(response => {
         return  response.json();
@@ -59,6 +50,7 @@ fetchMovieApi(url) {
 
     }
 
+//function that updates the movie details that the user searched for
     getMovieId(id) {
       let fullUrl = `https://api.themoviedb.org/3/movie/${id}?api_key=${MOVIE_API_KEY}&language=en-US`;
       fetch(fullUrl).then(response => {
@@ -67,7 +59,7 @@ fetchMovieApi(url) {
         console.log(json);
         //setting the state after the api is hit
          this.setState({
-          title: json.original_title,
+          movieTitle: json.original_title,
           image: `https://image.tmdb.org/t/p/w500${json.poster_path}`,
           summary: json.overview,
           vote: json.vote_average,
@@ -83,6 +75,7 @@ fetchMovieApi(url) {
       });
   }
 
+//function that gets the updated movie trailer that the user searched for
 fetchTrailer(youtubeUrl) {
       fetch(youtubeUrl).then(response => {
         return response.json();
@@ -95,6 +88,8 @@ fetchTrailer(youtubeUrl) {
       });
   }
 
+  //END FUNCTIONS SECTION
+
 //when the app first initiates, this is the default movie that is shown
   componentDidMount() {
     let url = `https://api.themoviedb.org/3/movie/${this.state.movieId}?api_key=${MOVIE_API_KEY}&language=en-US`;
@@ -102,7 +97,6 @@ fetchTrailer(youtubeUrl) {
 console.log(url);
     //get url for default movie trailer
     let youtubeUrl = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=3&q=${this.state.movieTitle} trailer&key=${YOUTUBE_API_KEY}`;
-    console.log(youtubeUrl);
 
 //fetch the movie star wars rogue one first time app runs
     fetch(url).then(response => {
@@ -134,15 +128,16 @@ console.log(url);
     }).catch(err => {
       console.log(err);
     });
-  }
+
+}
 
 //when the component updated, add the background image from the movie that is being fetched from the api
   componentDidUpdate() {
     document.querySelector(".background").style.backgroundImage = `url(https://image.tmdb.org/t/p/original${this.state.backdrop})`;
   }
 
+//RENDER THE COMPONENT
 render() {
-
     return (
       <div>
           <div className="container">

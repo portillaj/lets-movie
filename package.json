@@ -19,10 +19,12 @@
   "homepage": "https://github.com/portillaj/lets-movie#readme",
   "dependencies": {
     "axios": "^0.16.2",
+    "bloodhound-js": "^1.2.2",
     "fetch": "^1.1.0",
     "lodash": "^4.17.4",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
+    "typeahead": "^0.2.2",
     "youtube-api-search": "0.0.5"
   },
   "devDependencies": {

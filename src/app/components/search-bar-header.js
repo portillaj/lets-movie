@@ -30,8 +30,11 @@ render() {
                 </div>
                 <div className="col-sm-7 col-md-5">
                     <form onSubmit={this.handleSubmit.bind(this)}>
-                        <div className="input-group search-movie">
-                            <input className="form-control bg-light my-search" required ref="movieSearch" type="text" placeholder="Search Movie" />
+                        <div id="remote" className="input-group search-movie">
+
+                            <input className="typeahead form-control bg-light my-search" required ref="movieSearch" type="text"
+                             placeholder="Search Movie" />
+
                             <span className="input-group-btn">
                                 <button className="btn btn-dark" onClick={this.handleSubmit.bind(this)} type="button">Go!</button>
                             </span>
